@@ -10,10 +10,41 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { FiSearch, FiAlertTriangle, FiCheckCircle, FiShield, FiX } from 'react-icons/fi';
+import { FiCoffee, FiGift, FiHeart } from 'react-icons/fi';
+import confetti from 'canvas-confetti';
 
 const urlSchema = z.object({
     url: z.string().url('유효한 URL을 입력해주세요')
 });
+
+// 이스터에그 URL 목록
+const easterEggUrls = {
+    'https://www.google.com': {
+        message: '구글은 안전하지만, 검색 기록은 당신을 지켜보고 있어요! 👀',
+        icon: <FiSearch className="h-8 w-8 text-blue-500" />,
+        color: 'bg-blue-100'
+    },
+    'https://www.naver.com': {
+        message: '네이버는 안전하지만, 당신의 검색어가 실시간 검색어에 오르지 않길 바랄게요! 😉',
+        icon: <FiCoffee className="h-8 w-8 text-green-500" />,
+        color: 'bg-green-100'
+    },
+    'https://www.youtube.com': {
+        message: '유튜브는 안전하지만, 한 영상만 보려다가 3시간이 사라질 수 있어요! ⏰',
+        icon: <FiHeart className="h-8 w-8 text-red-500" />,
+        color: 'bg-red-100'
+    },
+    'https://www.github.com': {
+        message: '개발자시군요! 당신의 코드는 안전하지만, 커밋 메시지는 더 자세히 쓰세요! 💻',
+        icon: <FiGift className="h-8 w-8 text-purple-500" />,
+        color: 'bg-purple-100'
+    },
+    'https://ansim-link.vercel.app': {
+        message: 'AnSim-Link는 안전하니 안심하세요! 🔒',
+        icon: <FiShield className="h-8 w-8 text-blue-500" />,
+        color: 'bg-blue-100'
+    }
+};
 
 type FormValues = z.infer<typeof urlSchema>;
 
@@ -21,6 +52,7 @@ export function UrlForm() {
     const [isLoading, setIsLoading] = useState(false);
     const [result, setResult] = useState<any>(null);
     const [error, setError] = useState<string | null>(null);
+    const [easterEgg, setEasterEgg] = useState<any>(null);
 
     const form = useForm<FormValues>({
         resolver: zodResolver(urlSchema),
@@ -29,32 +61,66 @@ export function UrlForm() {
         }
     });
 
+    // 이스터에그 효과 실행 함수
+    const triggerEasterEgg = (url: string) => {
+        // URL이 이스터에그 목록에 있는지 확인
+        const normalizedUrl = url.replace(/\/$/, ''); // 끝에 슬래시 제거
+
+        for (const [eggUrl, eggData] of Object.entries(easterEggUrls)) {
+            if (normalizedUrl.toLowerCase() === eggUrl.toLowerCase()) {
+                setEasterEgg(eggData);
+
+                // 컨페티 효과 실행
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+
+                return true;
+            }
+        }
+
+        setEasterEgg(null);
+        return false;
+    };
+
     async function onSubmit(data: FormValues) {
         setIsLoading(true);
         setError(null);
+        setEasterEgg(null);
 
-        try {
-            const response = await fetch('/api/analyze', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ url: data.url }),
-            });
+        // 이스터에그 확인
+        const isEasterEgg = triggerEasterEgg(data.url);
 
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.error || '분석 중 오류가 발생했습니다.');
+        // 이스터에그가 아니면 일반 분석 진행
+        if (!isEasterEgg) {
+            try {
+                const response = await fetch('/api/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ url: data.url }),
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || '분석 중 오류가 발생했습니다.');
+                }
+
+                const result = await response.json();
+                setResult(result);
+            } catch (err: any) {
+                setError(err.message || 'URL 분석 중 오류가 발생했습니다. 다시 시도해주세요.');
+                console.error(err);
             }
-
-            const result = await response.json();
-            setResult(result);
-        } catch (err: any) {
-            setError(err.message || 'URL 분석 중 오류가 발생했습니다. 다시 시도해주세요.');
-            console.error(err);
-        } finally {
-            setIsLoading(false);
+        } else {
+            // 이스터에그인 경우 결과 초기화
+            setResult(null);
         }
+
+        setIsLoading(false);
     }
 
     return (
@@ -92,6 +158,15 @@ export function UrlForm() {
                     <AlertTitle>오류</AlertTitle>
                     <AlertDescription>{error}</AlertDescription>
                 </Alert>
+            )}
+
+            {easterEgg && (
+                <Card className="mt-6 overflow-hidden">
+                    <div className={`p-6 ${easterEgg.color} flex items-center gap-4`}>
+                        {easterEgg.icon}
+                        <div className="text-lg font-medium">{easterEgg.message}</div>
+                    </div>
+                </Card>
             )}
 
             {result && (
