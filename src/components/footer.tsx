@@ -39,13 +39,13 @@ export function Footer() {
                         <ul className="space-y-2">
                             <li className="flex items-center text-gray-600 text-sm">
                                 <FiMail className="mr-2" />
-                                <a href="mailto:contact@ansimlink.com" className="hover:text-blue-600">
-                                    contact@ansimlink.com
+                                <a href="mailto:wnehdtjr5@gmail.com" className="hover:text-blue-600">
+                                    wnehdtjr5@gmail.com
                                 </a>
                             </li>
                             <li className="flex items-center text-gray-600 text-sm">
                                 <FiGithub className="mr-2" />
-                                <a href="https://github.com/yourusername/ansimlink" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600">
+                                <a href="https://github.com/MojitoBar/AnSimLink" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600">
                                     GitHub
                                 </a>
                             </li>

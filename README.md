@@ -141,4 +141,4 @@ MIT
 
 ## 연락처
 
-프로젝트 관리자 - contact@ansimlink.com
+프로젝트 관리자 - wnehdtjr5@gmail.com

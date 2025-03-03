@@ -15,6 +15,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "AnSim-Link | 피싱 링크 판별 서비스",
   description: "의심스러운 URL을 입력하면 해당 사이트의 피싱 위험도를 분석하여 안전성을 평가해주는 웹 서비스",
+  icons: {
+    icon: [
+      { url: '/icons/shield-icon.svg', type: 'image/svg+xml' }
+    ],
+    apple: [
+      { url: '/icons/shield-icon.svg', type: 'image/svg+xml' }
+    ],
+  },
 };
 
 export default function RootLayout({
