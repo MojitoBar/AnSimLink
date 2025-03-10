@@ -18,7 +18,7 @@ export default function Home() {
                 피싱 링크 판별 서비스
               </h1>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                의심스러운 URL을 입력하면 해당 사이트의 피싱 위험도를 분석하여 안전성을 평가해드립니다.
+                의심되는 링크, 확인하고 안심하세요! 클릭 전에 URL을 검사해 피싱 사이트로부터 내 정보를 지켜드립니다.
               </p>
             </div>
 
@@ -38,7 +38,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">URL 분석 시스템</h3>
                 <p className="text-gray-600">
-                  입력된 URL을 다양한 보안 데이터베이스와 알고리즘을 통해 분석하여 위험 요소를 탐지합니다.
+                  여러 보안 데이터베이스와 검증된 알고리즘으로 의심스러운 URL을 빠르게 분석해 위험 요소를 찾아냅니다.
                 </p>
               </div>
 
@@ -48,7 +48,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">위험도 평가</h3>
                 <p className="text-gray-600">
-                  Google Safe Browsing, VirusTotal, WHOIS 정보 등을 종합하여 URL의 안전성을 점수로 제공합니다.
+                  구글 세이프 브라우징, 바이러스토탈 등 다양한 보안 정보를 종합해 한눈에 알아보기 쉬운 안전 점수를 제공합니다.
                 </p>
               </div>
 
@@ -58,7 +58,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">피싱 신고</h3>
                 <p className="text-gray-600">
-                  새로운 피싱 사이트를 발견하셨다면 신고해주세요. 여러분의 신고가 다른 사용자를 보호합니다.
+                  새로운 피싱 사이트를 발견하셨나요? 신고해주시면 검토 후 데이터베이스에 추가해 다른 사용자들도 보호할 수 있어요.
                 </p>
               </div>
             </div>
@@ -77,7 +77,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">URL 입력</h3>
                 <p className="text-gray-600">
-                  의심스러운 URL을 입력 폼에 붙여넣거나 입력하세요.
+                  의심되는 링크를 복사해서 입력창에 붙여넣기만 하세요.
                 </p>
               </div>
 
@@ -87,7 +87,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">분석 진행</h3>
                 <p className="text-gray-600">
-                  시스템이 자동으로 URL을 분석하여 위험 요소를 검사합니다.
+                  버튼 한 번으로 빠르게 URL을 검사하고 위험 요소를 찾아냅니다.
                 </p>
               </div>
 
@@ -97,7 +97,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">결과 확인</h3>
                 <p className="text-gray-600">
-                  안전성 점수와 함께 상세한 분석 결과를 확인하세요.
+                  한눈에 알아보기 쉬운 안전 점수와 상세한 분석 결과를 확인하세요.
                 </p>
               </div>
             </div>

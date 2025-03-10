@@ -9,7 +9,7 @@ export function Footer() {
                     <div>
                         <h3 className="font-semibold text-lg mb-4">AnSim-Link</h3>
                         <p className="text-gray-600 text-sm">
-                            사용자가 의심스러운 URL을 입력하면 해당 사이트의 피싱 위험도를 분석하여 안전성을 평가해주는 웹 서비스입니다.
+                            의심스러운 링크, 클릭 전에 확인하세요! 피싱 위험도를 분석해 안전하게 인터넷을 사용할 수 있도록 도와드립니다.
                         </p>
                     </div>
 

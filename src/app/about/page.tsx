@@ -23,10 +23,10 @@ export default function AboutPage() {
                         <div className="mt-12">
                             <h2 className="text-2xl font-bold mb-4">우리의 미션</h2>
                             <p className="text-lg text-gray-700 mb-6">
-                                인터넷 사용자들이 피싱 사이트로 인한 개인정보 유출과 금전적 피해를 입지 않도록 돕는 것이 우리의 미션입니다. 누구나 쉽게 사용할 수 있는 서비스를 통해 피싱 사이트를 사전에 식별하고 차단함으로써 안전한 인터넷 환경을 만들어 나가고자 합니다.
+                                인터넷을 사용하다 보면 누구나 피싱 사이트에 속을 수 있어요. 우리는 이런 위험으로부터 여러분의 소중한 개인정보와 자산을 지키고 싶습니다. 누구나 쉽게 사용할 수 있는 서비스로 피싱 사이트를 미리 차단해 더 안전한 인터넷 환경을 만들어 가는 것이 목표예요.
                             </p>
                             <p className="text-lg text-gray-700">
-                                AnSim-Link는 최신 보안 기술과 데이터베이스를 활용하여 의심스러운 URL을 분석하고, 사용자에게 해당 사이트의 안전성에 대한 정보를 제공합니다. 이를 통해 사용자는 피싱 사이트에 속아 개인정보를 입력하거나 금전적 피해를 입는 것을 방지할 수 있습니다.
+                                최신 보안 기술과 데이터베이스를 활용해 의심스러운 URL을 분석하고, 그 결과를 쉽게 이해할 수 있게 알려드립니다. 이를 통해 피싱 사이트에 속아 개인정보를 입력하거나 금전적 피해를 입는 것을 막을 수 있어요.
                             </p>
                         </div>
                     </div>
@@ -44,8 +44,8 @@ export default function AboutPage() {
                                 </div>
                                 <h3 className="text-xl font-semibold mb-2">Google Safe Browsing</h3>
                                 <p className="text-gray-600">
-                                    Google에서 제공하는 API를 통해 해당 URL이 피싱, 멀웨어 등의 위험 요소를 포함하고 있는지 확인합니다.
-                                    Google의 방대한 데이터베이스를 활용하여 이미 알려진 위험한 사이트를 식별합니다.
+                                    구글에서 제공하는 API로 해당 URL이 피싱이나 멀웨어 위험이 있는지 확인해요.
+                                    구글의 방대한 데이터베이스를 활용해 이미 알려진 위험한 사이트를 빠르게 찾아냅니다.
                                 </p>
                             </div>
 
@@ -55,8 +55,8 @@ export default function AboutPage() {
                                 </div>
                                 <h3 className="text-xl font-semibold mb-2">VirusTotal</h3>
                                 <p className="text-gray-600">
-                                    VirusTotal API를 통해 URL을 70개 이상의 안티바이러스 엔진으로 검사하여 악성 코드 및 피싱 위험을 탐지합니다.
-                                    다양한 보안 업체의 데이터를 종합하여 더 정확한 판단을 제공합니다.
+                                    70개 이상의 안티바이러스 엔진으로 URL을 검사해 악성코드와 피싱 위험을 찾아냅니다.
+                                    여러 보안 업체의 데이터를 한번에 확인해 더 정확한 결과를 제공해요.
                                 </p>
                             </div>
 
@@ -66,8 +66,8 @@ export default function AboutPage() {
                                 </div>
                                 <h3 className="text-xl font-semibold mb-2">WHOIS 정보 분석</h3>
                                 <p className="text-gray-600">
-                                    도메인의 등록 정보를 분석하여 최근에 생성된 도메인인지, 등록자 정보가 숨겨져 있는지 등을 확인합니다.
-                                    피싱 사이트는 대부분 최근에 생성된 도메인을 사용하는 경향이 있어 이를 통해 위험도를 판단합니다.
+                                    도메인이 언제 만들어졌는지, 누가 등록했는지 등의 정보를 확인합니다.
+                                    피싱 사이트는 대부분 최근에 만들어진 도메인을 사용하기 때문에 이 정보로 위험을 예측할 수 있어요.
                                 </p>
                             </div>
 
@@ -77,8 +77,8 @@ export default function AboutPage() {
                                 </div>
                                 <h3 className="text-xl font-semibold mb-2">URL 패턴 분석</h3>
                                 <p className="text-gray-600">
-                                    URL 자체의 특성을 분석하여 의심스러운 패턴(긴 서브도메인, 숫자가 많은 도메인, 유명 브랜드 이름의 변형 등)을 탐지합니다.
-                                    머신러닝 알고리즘을 활용하여 지속적으로 발전하는 피싱 URL 패턴을 학습합니다.
+                                    URL 자체의 특징을 분석해 의심스러운 패턴(긴 주소, 이상한 숫자 조합, 유명 브랜드 이름의 살짝 다른 버전 등)을 찾아냅니다.
+                                    머신러닝 기술로 계속 발전하는 피싱 URL 패턴도 학습해 대응합니다.
                                 </p>
                             </div>
                         </div>
@@ -92,17 +92,17 @@ export default function AboutPage() {
 
                         <div className="bg-white p-8 rounded-lg shadow-sm">
                             <p className="text-lg text-gray-700 text-center">
-                                AnSim-Link는 웹 보안과 사용자 보호에 열정을 가진 개발자들이 모여 만든 서비스입니다.
-                                더 안전한 인터넷 환경을 만들기 위해 지속적으로 서비스를 개선하고 있습니다.
+                                AnSim-Link는 웹 보안과 사용자 보호에 관심 많은 개발자들이 함께 만든 서비스입니다.
+                                더 안전한 인터넷 환경을 위해 계속 서비스를 개선하고 있어요.
                             </p>
 
                             <div className="mt-8 text-center">
                                 <p className="mb-2">문의 및 제안사항:</p>
                                 <a
-                                    href="mailto:contact@ansimlink.com"
+                                    href="mailto:wnehdtjr5@gmail.com"
                                     className="inline-flex items-center text-blue-600 hover:text-blue-800"
                                 >
-                                    contact@ansimlink.com
+                                    wnehdtjr5@gmail.com
                                 </a>
                             </div>
                         </div>

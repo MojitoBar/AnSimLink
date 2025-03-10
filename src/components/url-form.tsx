@@ -25,22 +25,22 @@ const easterEggUrls = {
         color: 'bg-blue-100'
     },
     'https://www.naver.com': {
-        message: '네이버는 안전하지만, 당신의 검색어가 실시간 검색어에 오르지 않길 바랄게요! 😉',
+        message: '네이버는 안전해요! 하지만 실검에 내 검색어가 올라가면 민망할 수도... 😉',
         icon: <FiCoffee className="h-8 w-8 text-green-500" />,
         color: 'bg-green-100'
     },
     'https://www.youtube.com': {
-        message: '유튜브는 안전하지만, 한 영상만 보려다가 3시간이 사라질 수 있어요! ⏰',
+        message: '유튜브는 안전하지만, 한 영상만 보려다가 3시간이 순삭될 수 있어요! ⏰',
         icon: <FiHeart className="h-8 w-8 text-red-500" />,
         color: 'bg-red-100'
     },
     'https://www.github.com': {
-        message: '개발자시군요! 당신의 코드는 안전하지만, 커밋 메시지는 더 자세히 쓰세요! 💻',
+        message: '개발자시군요! 깃허브는 안전해요. 근데 커밋 메시지는 좀 더 자세히 쓰는 게 어떨까요? 💻',
         icon: <FiGift className="h-8 w-8 text-purple-500" />,
         color: 'bg-purple-100'
     },
     'https://ansim-link.vercel.app': {
-        message: 'AnSim-Link는 안전하니 안심하세요! 🔒',
+        message: '우리 서비스는 당연히 안전하죠! 안심하고 사용하세요~ 🔒',
         icon: <FiShield className="h-8 w-8 text-blue-500" />,
         color: 'bg-blue-100'
     }

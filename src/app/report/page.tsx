@@ -74,7 +74,7 @@ export default function ReportPage() {
                             피싱 사이트 신고
                         </h1>
                         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                            의심스러운 피싱 사이트를 발견하셨나요? 아래 양식을 통해 신고해주시면 검토 후 데이터베이스에 추가하겠습니다.
+                            의심스러운 피싱 사이트를 발견하셨나요? 아래 양식으로 신고해주시면 검토 후 다른 사용자들도 보호할 수 있어요.
                         </p>
                     </div>
 
@@ -84,7 +84,7 @@ export default function ReportPage() {
                                 <Alert className="bg-green-50 text-green-800 border-green-500">
                                     <AlertTitle className="text-lg font-semibold">신고가 접수되었습니다</AlertTitle>
                                     <AlertDescription>
-                                        소중한 신고 감사합니다. 검토 후 데이터베이스에 추가하여 다른 사용자들을 보호하는데 활용하겠습니다.
+                                        소중한 신고 감사합니다! 검토 후 데이터베이스에 추가해 다른 사용자들도 함께 보호하겠습니다.
                                         <div className="mt-4">
                                             <Button onClick={() => setIsSuccess(false)} variant="outline">
                                                 새 신고 작성하기
