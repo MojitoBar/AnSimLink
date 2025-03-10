@@ -23,6 +23,9 @@ export const metadata: Metadata = {
       { url: '/icons/shield-icon.svg', type: 'image/svg+xml' }
     ],
   },
+  verification: {
+    google: "D9UkM4Wzh6zGyXKePHH21HM9W-7zFbOLoLq-sMLscWY",
+  },
 };
 
 export default function RootLayout({
