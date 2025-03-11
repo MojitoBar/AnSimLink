@@ -506,8 +506,8 @@ async function checkGoogleCustomSearch(url: string) {
         const urlObj = new URL(url);
         const domain = urlObj.hostname;
 
-        // 검색 쿼리 설정 (도메인 또는 사이트 검색)
-        const searchQuery = `"${domain}" OR site:${domain}`;
+        // 검색 쿼리 설정 (사이트 검색만)
+        const searchQuery = `site:${domain}`;
 
         console.log('Google Custom Search API 호출 시작...');
         console.log('API 키:', GOOGLE_CUSTOM_SEARCH_API_KEY.substring(0, 5) + '...');
@@ -571,10 +571,27 @@ async function checkGoogleCustomSearch(url: string) {
         }
 
         // 상위 검색 결과에 도메인이 포함되어 있는지 확인
-        const isInTopResults = items.some((item: any) => {
-            const itemUrl = new URL(item.link);
-            return itemUrl.hostname === domain;
+        let isInTopResults = items.some((item: any) => {
+            try {
+                const itemUrl = new URL(item.link);
+                const itemHostname = itemUrl.hostname;
+
+                // 정확히 일치하거나, 서브도메인을 포함하는 경우 확인
+                return itemHostname === domain ||
+                    itemHostname.endsWith(`.${domain}`) ||
+                    domain.endsWith(`.${itemHostname}`);
+            } catch (error) {
+                console.error('URL 파싱 오류:', error);
+                return false;
+            }
         });
+
+        // site: 검색 쿼리를 사용한 경우 항상 true로 설정
+        // 검색 결과가 충분히 많으면 해당 도메인이 존재한다고 판단
+        if (searchQuery.startsWith('site:') && resultCount > 1000) {
+            console.log('site: 검색 쿼리 사용 및 충분한 결과 수로 인해 상위 결과 포함으로 판단');
+            isInTopResults = true;
+        }
 
         console.log('최종 점수:', score);
         console.log('상위 검색 결과에 포함됨:', isInTopResults);
@@ -700,7 +717,18 @@ export async function POST(request: NextRequest) {
 
         const totalScore = Math.round(scores.reduce((sum, score) => sum + score, 0));
         console.log('최종 점수:', totalScore);
-        const isSafe = totalScore > 70;
+
+        // 모든 검사를 완벽하게 통과해야만 안전하다고 판단
+        const isSafe =
+            totalScore >= 85 && // 최종 점수가 85점 이상이어야 함
+            googleSafeBrowsing.score >= 90 && // Google Safe Browsing 검사 통과
+            virusTotal.score >= 90 && // VirusTotal 검사 통과
+            whois.score >= 70 && // WHOIS 정보 검사 통과
+            urlAnalysis.score >= 80 && // URL 패턴 분석 통과
+            googleCustomSearch.score >= 80 && // Google 검색 분석 통과
+            (googleCustomSearch.isInTopResults ||
+                (googleCustomSearch.score >= 90 && googleCustomSearch.resultCount > 10000)) && // 상위 검색 결과에 포함되거나 검색 결과가 매우 많음
+            !suspiciousDomains.isTyposquatting; // 의심스러운 도메인이 아님
 
         // 결과 조합
         const result = {
@@ -779,7 +807,11 @@ function getExplanation(
 
     // Google Custom Search 결과에 따른 설명
     if (!googleCustomSearch.isInTopResults) {
-        reasons.push(`이 도메인은 Google 검색 결과에서 발견되지 않았습니다.`);
+        if (googleCustomSearch.resultCount > 10000) {
+            reasons.push(`이 도메인은 Google 검색 결과에서 ${googleCustomSearch.resultCount}개 발견되어 신뢰할 수 있습니다.`);
+        } else {
+            reasons.push(`이 도메인은 Google 검색 결과에 있지만 상위 결과에 포함되지 않아 의심스럽습니다.`);
+        }
     } else if (googleCustomSearch.isHighlySuspicious) {
         reasons.push(`이 도메인은 Google 검색 결과에서 ${googleCustomSearch.resultCount}개만 발견되어 매우 의심스럽습니다.`);
     } else if (googleCustomSearch.isSuspicious) {
@@ -787,7 +819,7 @@ function getExplanation(
     }
 
     if (reasons.length === 0) {
-        return "이 URL은 안전한 것으로 분석되었습니다.";
+        return "이 URL은 모든 보안 검사를 통과하여 안전한 것으로 분석되었습니다.";
     } else {
         return `이 URL은 다음과 같은 이유로 안전하지 않을 수 있습니다:\n${reasons.join('\n')}`;
     }

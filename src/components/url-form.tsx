@@ -195,7 +195,7 @@ export function UrlForm() {
                                 <h4 className={`font-medium mb-2 ${result.isSafe ? 'text-blue-800' : 'text-red-800'}`}>설명</h4>
                                 {result.isSafe ? (
                                     <p className="text-blue-700">
-                                        이 웹사이트는 안전한 것으로 보입니다. 안심하고 이용하셔도 됩니다.
+                                        이 웹사이트는 모든 보안 검사를 통과하였습니다. 하지만 조금이라도 의심스로운 점이 있다면 오른쪽 상단에 피싱 신고를 통해 알려주세요.
                                     </p>
                                 ) : (
                                     <div className="text-red-600">
@@ -256,10 +256,21 @@ export function UrlForm() {
                                                     </>
                                                 ) : (
                                                     <>
-                                                        <FiX className="h-5 w-5 text-red-600 mr-2" />
-                                                        <span className="text-red-600 font-medium">
-                                                            검색 결과에서 발견되지 않음
-                                                        </span>
+                                                        {result.details.googleCustomSearch.resultCount > 10000 ? (
+                                                            <>
+                                                                <FiCheckCircle className="h-5 w-5 text-green-600 mr-2" />
+                                                                <span className="text-green-600 font-medium">
+                                                                    검색 결과 다수 발견됨 ({result.details.googleCustomSearch.resultCount.toLocaleString()})
+                                                                </span>
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                <FiX className="h-5 w-5 text-red-600 mr-2" />
+                                                                <span className="text-red-600 font-medium">
+                                                                    상위 검색 결과에 포함되지 않음
+                                                                </span>
+                                                            </>
+                                                        )}
                                                     </>
                                                 )}
                                             </div>
