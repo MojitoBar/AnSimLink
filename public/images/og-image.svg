@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#f8fafc"/>
+  <g transform="translate(300, 150) scale(5)">
+    <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#EFF6FF"/>
+  </g>
+  <text x="600" y="450" font-family="Arial, sans-serif" font-size="60" font-weight="bold" text-anchor="middle" fill="#1e3a8a">AnSim-Link</text>
+  <text x="600" y="520" font-family="Arial, sans-serif" font-size="36" text-anchor="middle" fill="#4b5563">피싱 링크 판별 서비스</text>
+</svg> 
